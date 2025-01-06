@@ -60,7 +60,7 @@ export const tokenData = async () => {
   const tokenPriceInUSD = `$${Number(tokenQuoteBase?.price.toFixed(5)) || 0}`;
   const volumeIn24H = formatLargeNumber(tokenQuoteBase?.volume_24h || 0);
   const changeIn1H = formatChange(tokenQuoteBase?.percent_change_price_1h || 0);
-  const changeIn24h = formatChange(
+  const changeIn24H = formatChange(
     tokenQuoteBase?.percent_change_price_24h || 0
   );
   const marketCap = formatLargeNumber(tokenQuoteBase?.fully_diluted_value || 0);
@@ -73,7 +73,7 @@ export const tokenData = async () => {
     tokenPriceInUSD,
     volumeIn24H,
     changeIn1H,
-    changeIn24h,
+    changeIn24H,
     marketCap,
     buy24H,
     sell24H,

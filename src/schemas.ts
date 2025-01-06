@@ -56,7 +56,7 @@ export const TokenDataSchema = z.object({
   tokenPriceInUSD: z.string(),
   volumeIn24H: z.string(),
   changeIn1H: z.string(),
-  changeIn24h: z.string(),
+  changeIn24H: z.string(),
   marketCap: z.string(),
   transactions24H: z.number(),
   sell24H: z.number(),
