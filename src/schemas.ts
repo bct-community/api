@@ -58,9 +58,9 @@ export const TokenDataSchema = z.object({
   changeIn1H: z.string(),
   changeIn24H: z.string(),
   marketCap: z.string(),
-  transactions24H: z.number(),
-  sell24H: z.number(),
-  buy24H: z.number(),
+  transactions24H: z.string(),
+  sell24H: z.string(),
+  buy24H: z.string(),
   totalSupply: z.string(),
   holders: z.number(),
 });

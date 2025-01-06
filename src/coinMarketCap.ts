@@ -9,19 +9,23 @@ const formatChange = (value: number): string => {
 
 // faça uma lista de opções para renomear essa função, pos ela é utilizada além do market cap também formata o volume 24h
 const formatLargeNumber = (value: number) => {
+  if (value < 1e3) {
+    return value.toFixed(0);
+  }
+
   if (value < 1e6) {
-    return `$${(value / 1e3).toFixed(0)}K`;
+    return `${(value / 1e3).toFixed(0)}K`;
   }
 
   if (value < 1e7) {
-    return `$${(value / 1e6).toFixed(1)}M`;
+    return `${(value / 1e6).toFixed(1)}M`;
   }
 
   if (value < 1e9) {
-    return `$${(value / 1e6).toFixed(0)}M`;
+    return `${(value / 1e6).toFixed(0)}M`;
   }
 
-  return `$${(value / 1e9).toFixed(1)}B`;
+  return `${(value / 1e9).toFixed(1)}B`;
 };
 
 const formatSupply = (value: number) => {
@@ -58,15 +62,17 @@ export const tokenData = async () => {
   const tokenDataBase = validatedData.data?.[0];
 
   const tokenPriceInUSD = `$${Number(tokenQuoteBase?.price.toFixed(5)) || 0}`;
-  const volumeIn24H = formatLargeNumber(tokenQuoteBase?.volume_24h || 0);
+  const volumeIn24H = '$' + formatLargeNumber(tokenQuoteBase?.volume_24h || 0);
   const changeIn1H = formatChange(tokenQuoteBase?.percent_change_price_1h || 0);
   const changeIn24H = formatChange(
     tokenQuoteBase?.percent_change_price_24h || 0
   );
   const marketCap = formatLargeNumber(tokenQuoteBase?.fully_diluted_value || 0);
-  const buy24H = tokenDataBase?.['24h_no_of_buys'] || 0;
-  const sell24H = tokenDataBase?.['24h_no_of_sells'] || 0;
-  const transactions24H = tokenDataBase?.num_transactions_24h || 0;
+  const buy24H = formatLargeNumber(tokenDataBase?.['24h_no_of_buys'] || 0);
+  const sell24H = formatLargeNumber(tokenDataBase?.['24h_no_of_sells'] || 0);
+  const transactions24H = formatLargeNumber(
+    tokenDataBase?.num_transactions_24h || 0
+  );
   const totalSupply = formatSupply(tokenDataBase?.total_supply_base_asset || 0);
 
   const formattedData: TokenData = {
