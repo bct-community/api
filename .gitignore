@@ -1,0 +1,13 @@
+# Dependencies
+node_modules
+package-lock.json
+
+# Build
+/dist
+/dist_bkp
+
+# Environment variables
+.env
+
+# Certificates
+*.pem

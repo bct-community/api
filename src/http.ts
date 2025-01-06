@@ -1,0 +1,9 @@
+import { type Response } from 'express';
+
+export const sendJson = (res: Response, json: Record<any, any>) => {
+  res.status(200).json(json);
+};
+
+export const internalServerError = (res: Response) => {
+  res.status(500);
+};
