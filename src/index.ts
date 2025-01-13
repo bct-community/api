@@ -67,7 +67,11 @@ const server = isHttps
 app.use(morgan(morganFormat));
 app.use(slowDown(speedLimiter));
 app.use(rateLimit(limiter));
-app.use(cors());
+app.use(
+  cors({
+    origin: ['https://localhost:5173', 'https://bct-community.netlify.app'],
+  })
+);
 app.use(express.json());
 app.use('/api', router);
 
