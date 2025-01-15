@@ -6,13 +6,13 @@ import type { CoinMarketCapResponse } from './schemas.js';
 import { internalServerError, sendJson } from './http.js';
 import { env } from './config.js';
 
-const stdTTL = env.TOKEN_CACHE_HOURS * 3600;
-const myCache = new NodeCache({ stdTTL });
+const tokenTTL = env.TOKEN_CACHE_HOURS * 3600;
+const tokenCache = new NodeCache({ stdTTL: tokenTTL });
 
 export const fetchTokenData = async (_req: Request, res: Response) => {
   const cacheKey = 'tokenData';
 
-  const cachedData = myCache.get<CoinMarketCapResponse>(cacheKey);
+  const cachedData = tokenCache.get<CoinMarketCapResponse>(cacheKey);
 
   if (cachedData) {
     console.log('Returnin data from cache');
@@ -24,7 +24,7 @@ export const fetchTokenData = async (_req: Request, res: Response) => {
 
     const tokenJson = await tokenData();
 
-    myCache.set(cacheKey, tokenJson);
+    tokenCache.set(cacheKey, tokenJson);
 
     return sendJson(res, tokenJson);
   } catch (error) {
