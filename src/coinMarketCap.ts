@@ -7,7 +7,6 @@ const formatChange = (value: number): string => {
   return `${signal}${formattedValue}%`;
 };
 
-// faça uma lista de opções para renomear essa função, pos ela é utilizada além do market cap também formata o volume 24h
 const formatLargeNumber = (value: number) => {
   if (value < 1e3) {
     return value.toFixed(0);
@@ -32,7 +31,6 @@ const formatSupply = (value: number) => {
   return `${(value / 1e6).toFixed(0)}M`;
 };
 
-// export const tokenData = async (): Promise<TokenData> => {
 export const tokenData = async () => {
   const myHeaders = new Headers();
   myHeaders.append('X-CMC_PRO_API_KEY', env.CMC_API_TOKEN);

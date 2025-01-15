@@ -5,5 +5,9 @@ export const sendJson = (res: Response, json: Record<any, any>) => {
 };
 
 export const internalServerError = (res: Response) => {
-  res.status(500);
+  res.status(500).end();
+};
+
+export const notFound = (res: Response) => {
+  res.status(404).end();
 };

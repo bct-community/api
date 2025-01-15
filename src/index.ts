@@ -10,6 +10,7 @@ import './log.js';
 import { router } from './router.js';
 import { cert } from './cert.js';
 import { env } from './config.js';
+import { connectToMongoDb } from './mongoDb.js';
 
 const isHttps = env.NODE_ENV === 'development';
 
@@ -74,6 +75,8 @@ app.use(
 );
 app.use(express.json());
 app.use('/api', router);
+
+connectToMongoDb();
 
 server.listen(env.PORT, () => {
   console.log(
