@@ -65,6 +65,7 @@ const server = isHttps
   ? https.createServer({ ...cert }, app)
   : http.createServer(app);
 
+app.set('trust proxy', true);
 app.use(morgan(morganFormat));
 app.use(slowDown(speedLimiter));
 app.use(rateLimit(limiter));
