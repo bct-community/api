@@ -15,7 +15,9 @@ const get = async ({ date }: { date: string }) => {
 
   const daily = generateDailyCounts(date, 7, records);
 
-  return { daily };
+  const total = records.length;
+
+  return { total, daily };
 };
 
 export { get };
