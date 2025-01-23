@@ -21,11 +21,14 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["*"]
-    }
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ]
   },
   "ts-node": {
-    "esm": true,
-    "require": ["tsconfig-paths/register"]
+    "esm": true
   },
   "include": ["src"],
   "exclude": ["node_modules"]

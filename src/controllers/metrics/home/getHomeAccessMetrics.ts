@@ -1,8 +1,8 @@
 import { type Request, type Response } from 'express';
 
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
-import * as s from '@/services/metrics/home/getHomeAccessMetrics';
-import { todayFormatted } from '@/utils/todayFormatted';
+import * as s from '@/services/metrics/home/getHomeAccessMetrics.js';
+import { todayFormatted } from '@/utils/todayFormatted.js';
 
 const getHomeAccessMetrics = async (_req: Request, res: Response) => {
   try {

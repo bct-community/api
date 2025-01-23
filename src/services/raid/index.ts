@@ -1,5 +1,5 @@
 import { RaidModel, RaidSchema } from '@/models/raid/index.js';
-import { todayFormatted } from '@/utils/todayFormatted';
+import { todayFormatted } from '@/utils/todayFormatted.js';
 
 export const raidData = async () => {
   const raid = await RaidModel.findOne({

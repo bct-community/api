@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { internalServerError, endResponseWithCode } from '@/utils/http.js';
 import * as s from '@/services/metrics/home/registerHomeAccess.js';
-import { todayFormatted } from '@/utils/todayFormatted';
+import { todayFormatted } from '@/utils/todayFormatted.js';
 
 const bodySchema = z.object({
   country: z.string().nonempty('Country is required'),
