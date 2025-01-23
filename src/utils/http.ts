@@ -11,3 +11,7 @@ export const internalServerError = (res: Response) => {
 export const notFound = (res: Response) => {
   res.status(404).end();
 };
+
+export const endResponseWithCode = (res: Response, status: number) => {
+  res.status(status).end();
+};

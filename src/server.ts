@@ -6,11 +6,11 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import './log.js';
-import { router } from './router.js';
-import { cert } from './cert.js';
-import { env } from './config.js';
-import { connectToMongoDb } from './mongoDb.js';
+import '@/utils/log.js';
+import { router } from '@/router/index.js';
+import { cert } from '@/config/cert.js';
+import { env } from '@/config/index.js';
+import { connectToMongoDb } from '@/utils/connectToMongoDb.js';
 
 const isHttps = env.NODE_ENV === 'development';
 

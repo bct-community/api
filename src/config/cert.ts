@@ -1,11 +1,12 @@
 import { readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { env } from './config.js';
+
+import { env } from './index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const rootPath = path.resolve(__dirname, '../');
+const rootPath = path.resolve(__dirname, '../../');
 
 const getCert = () => {
   if (env.NODE_ENV === 'development') {

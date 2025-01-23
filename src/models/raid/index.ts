@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-
 import { z } from 'zod';
 
 export const RaidSchema = z.object({

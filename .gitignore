@@ -11,3 +11,6 @@ package-lock.json
 
 # Certificates
 *.pem
+
+# to-do
+to-do.md
