@@ -1,6 +1,6 @@
 export { default as registerHomeAccess } from './home/registerHomeAccess.js';
 export { default as getHomeAccessMetrics } from './home/getHomeAccessMetrics.js';
-export { default as getHomeAccessByCountry } from './home/getHomeAccessByCountry';
+export { default as getHomeAccessByCountry } from './home/getHomeAccessByCountry.js';
 
 // export { default as registerRaidAccess } from './raid/registerRaidAccess';
 // export { default as getRaidAccessMetrics } from './raid/getRaidAccessMetrics';
