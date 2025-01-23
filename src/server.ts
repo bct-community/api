@@ -18,11 +18,13 @@ const speedLimiter = {
   windowMs: 1 * 60 * 1000,
   delayAfter: 5,
   delayMs: () => 2000,
+  validate: { trustProxy: false },
 };
 
 const limiter = {
   windowMs: 1 * 60 * 1000,
   max: 10,
+  validate: { trustProxy: false },
 };
 
 morgan.token('timestamp', () => {
