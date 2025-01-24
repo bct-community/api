@@ -2,8 +2,6 @@ import { env } from '@/config/index.js';
 import { CoinMarketCapResponseSchema, type TokenData } from '@/types/token.js';
 
 const formatChange = (value: number): string => {
-  console.log('jovem pan');
-
   const formattedValue = value.toFixed(2);
   const signal = value > 0 ? '+' : '';
   return `${signal}${formattedValue}%`;
