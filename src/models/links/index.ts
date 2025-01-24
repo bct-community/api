@@ -1,8 +1,9 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Types } from 'mongoose';
 import { z } from 'zod';
 
 export const LinksSchema = z.array(
   z.object({
+    _id: z.custom<Types.ObjectId>(),
     label: z.string().nonempty(),
     url: z.string().nonempty(),
     icon: z.string().nonempty(),
