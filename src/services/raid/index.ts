@@ -7,7 +7,7 @@ export const raidData = async () => {
   }).exec();
 
   if (!raid) {
-    console.log(`No raid found for date: ${todayFormatted}`);
+    console.log(`No raid found for date: ${todayFormatted()}`);
     return null;
   }
 
