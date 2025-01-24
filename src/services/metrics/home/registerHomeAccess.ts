@@ -1,4 +1,4 @@
-import { HomeModel } from '@/models/metrics/home.js';
+import { HomeMetricsModel } from '@/models/metrics/home.js';
 
 const register = async ({
   country,
@@ -7,7 +7,7 @@ const register = async ({
   country: string;
   date: string;
 }) => {
-  const newAccess = new HomeModel({
+  const newAccess = new HomeMetricsModel({
     country,
     date,
   });

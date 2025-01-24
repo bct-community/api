@@ -1,7 +1,7 @@
-import { HomeModel } from '@/models/metrics/home.js';
+import { HomeMetricsModel } from '@/models/metrics/home.js';
 
 const get = async () => {
-  const countries = await HomeModel.aggregate([
+  const countries = await HomeMetricsModel.aggregate([
     {
       $group: {
         _id: '$country',

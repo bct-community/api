@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const homeSchema = new Schema(
+const homeMetricsSchema = new Schema(
   {
     country: {
       type: String,
@@ -14,4 +14,4 @@ const homeSchema = new Schema(
   { collection: 'home_metrics' }
 );
 
-export const HomeModel = model('HomeModel', homeSchema);
+export const HomeMetricsModel = model('HomeMetricsModel', homeMetricsSchema);
