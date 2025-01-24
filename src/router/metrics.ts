@@ -4,9 +4,9 @@ import {
   registerHomeAccess,
   getHomeAccessMetrics,
   getHomeAccessByCountry,
-  // registerRaidAccess,
-  // getRaidAccessMetrics,
-  // getRaidAccessByRaid,
+  registerRaidAccess,
+  getRaidAccessMetrics,
+  getRaidAccessTrending,
   // registerBotMessageInRaid,
   // getBotMessagesByRaid,
   // registerLinkAccess,
@@ -27,9 +27,9 @@ router.get('/home', getHomeAccessMetrics);
 router.get('/home/countries', getHomeAccessByCountry);
 
 // Raids (Acessos e mensagens)
-// router.post('/raids', registerRaidAccess);
-// router.get('/raids', getRaidAccessMetrics);
-// router.get('/raids/by-raid', getRaidAccessByRaid);
+router.post('/raids', registerRaidAccess);
+router.get('/raids', getRaidAccessMetrics);
+router.get('/raids/trending', getRaidAccessTrending);
 // router.post('/raids/bot-messages', registerBotMessageInRaid);
 // router.get('/raids/bot-messages', getBotMessagesByRaid);
 

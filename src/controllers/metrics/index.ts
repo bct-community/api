@@ -2,9 +2,9 @@ export { default as registerHomeAccess } from './home/registerHomeAccess.js';
 export { default as getHomeAccessMetrics } from './home/getHomeAccessMetrics.js';
 export { default as getHomeAccessByCountry } from './home/getHomeAccessByCountry.js';
 
-// export { default as registerRaidAccess } from './raid/registerRaidAccess.js';
-// export { default as getRaidAccessMetrics } from './raid/getRaidAccessMetrics.js';
-// export { default as getRaidAccessByRaid } from './raid/getRaidAccessByRaid.js';
+export { default as registerRaidAccess } from './raid/registerRaidAccess.js';
+export { default as getRaidAccessMetrics } from './raid/getRaidAccessMetrics.js';
+export { default as getRaidAccessTrending } from './raid/getRaidAccessTrending.js';
 // export { default as registerBotMessageInRaid } from './raid/registerBotMessageInRaid.js';
 // export { default as getBotMessagesByRaid } from './raid/getBotMessagesByRaid.js';
 
