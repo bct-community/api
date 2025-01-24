@@ -6,9 +6,9 @@ export { default as registerRaidAccess } from './raid/registerRaidAccess.js';
 export { default as getRaidAccessMetrics } from './raid/getRaidAccessMetrics.js';
 export { default as getRaidAccessTrending } from './raid/getRaidAccessTrending.js';
 
-// export { default as registerLinkAccess } from './link/registerLinkAccess.js';
-// export { default as getLinkAccessMetrics } from './link/getLinkAccessMetrics.js';
-// export { default as getLinkAccessByLink } from './link/getLinkAccessByLink.js';
+export { default as registerLinkAccess } from './links/registerLinkAccess.js';
+export { default as getLinksAccessMetrics } from './links/getLinksAccessMetrics.js';
+export { default as getLinksAccessTrending } from './links/getLinksAccessTrending.js';
 
 export { default as registerChatMessage } from './chat/registerChatMessage.js';
 export { default as getChatMessagesMetrics } from './chat/getChatMessagesMetrics.js';

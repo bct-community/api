@@ -7,9 +7,9 @@ import {
   registerRaidAccess,
   getRaidAccessMetrics,
   getRaidAccessTrending,
-  // registerLinkAccess,
-  // getLinkAccessMetrics,
-  // getLinkAccessByLink,
+  registerLinkAccess,
+  getLinksAccessMetrics,
+  getLinksAccessTrending,
   registerChatMessage,
   getChatMessagesMetrics,
   registerChatMessageInRaid,
@@ -32,9 +32,9 @@ router.get('/raids', getRaidAccessMetrics);
 router.get('/raids/trending', getRaidAccessTrending);
 
 // Links (Acessos a links)
-// router.post('/links', registerLinkAccess);
-// router.get('/links', getLinkAccessMetrics);
-// router.get('/links/by-link', getLinkAccessByLink);
+router.post('/links', registerLinkAccess);
+router.get('/links', getLinksAccessMetrics);
+router.get('/links/trending', getLinksAccessTrending);
 
 // Chat (Mensagens trocadas com o bot)
 router.post('/chat', registerChatMessage);
