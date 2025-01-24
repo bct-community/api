@@ -4,23 +4,9 @@ import { type Request, type Response } from 'express';
 import { raidData } from '@/services/raid/index.js';
 import type { Raid } from '@/models/raid/index.js';
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
+import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
 
-function calculateRaidTTL() {
-  const now = new Date();
-  const endOfDay = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate(),
-    23,
-    59,
-    59,
-    999
-  );
-  const ttlInSeconds = Math.floor((endOfDay.getTime() - now.getTime()) / 1000);
-  return ttlInSeconds;
-}
-
-const raidTTL = calculateRaidTTL();
+const raidTTL = getEndOfDayTTL();
 const raidCache = new NodeCache({ stdTTL: raidTTL });
 
 const getRaid = async (_req: Request, res: Response) => {
