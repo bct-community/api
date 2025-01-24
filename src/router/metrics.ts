@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
 import {
-  registerHomeAccess,
-  getHomeAccessMetrics,
-  getHomeAccessByCountry,
+  registerVisit,
+  getVisitsMetrics,
+  getVisitsByCountry,
   registerRaidAccess,
   getRaidAccessMetrics,
   getRaidAccessTrending,
@@ -21,10 +21,10 @@ import {
 
 const router = Router();
 
-// Home (Acessos ao site)
-router.post('/home', registerHomeAccess);
-router.get('/home', getHomeAccessMetrics);
-router.get('/home/countries', getHomeAccessByCountry);
+// Visits (Acessos ao site)
+router.post('/visits', registerVisit);
+router.get('/visits', getVisitsMetrics);
+router.get('/visits/countries', getVisitsByCountry);
 
 // Raids (Acessos e mensagens)
 router.post('/raids', registerRaidAccess);

@@ -1,9 +1,9 @@
 import { type Request, type Response } from 'express';
 
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
-import * as s from '@/services/metrics/home/getHomeAccessByCountry.js';
+import * as s from '@/services/metrics/visits/getVisitsByCountry.js';
 
-const getHomeAccessByCountry = async (_req: Request, res: Response) => {
+const getVisitsByCountry = async (_req: Request, res: Response) => {
   try {
     const metricsJson = await s.get();
 
@@ -13,10 +13,10 @@ const getHomeAccessByCountry = async (_req: Request, res: Response) => {
 
     return sendJson(res, metricsJson);
   } catch (error) {
-    console.error('Error on getHomeAccessByCountry service: ', error);
+    console.error('Error on getVisitsByCountry service: ', error);
 
     return internalServerError(res);
   }
 };
 
-export default getHomeAccessByCountry;
+export default getVisitsByCountry;

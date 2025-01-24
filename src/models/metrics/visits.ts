@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const homeMetricsSchema = new Schema(
+const visitsMetricsSchema = new Schema(
   {
     country: {
       type: String,
@@ -11,7 +11,10 @@ const homeMetricsSchema = new Schema(
       required: true,
     },
   },
-  { collection: 'home_metrics' }
+  { collection: 'visits_metrics' }
 );
 
-export const HomeMetricsModel = model('HomeMetricsModel', homeMetricsSchema);
+export const VisitsMetricsModel = model(
+  'VisitsMetricsModel',
+  visitsMetricsSchema
+);
