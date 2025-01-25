@@ -24,7 +24,12 @@ const get = async () => {
     return null;
   }
 
-  return { countries };
+  const highestCount: number = countries.reduce(
+    (acc, { count }) => (count > acc ? count : acc),
+    0
+  );
+
+  return { highestCount, countries };
 };
 
 export { get };

@@ -21,5 +21,9 @@ export const generateDailyCounts = (
     return { date: formattedDate, count };
   });
 
-  return dailyCounts;
+  return dailyCounts.sort(
+    (a, b) =>
+      parse(a.date, dateFormat, new Date()).getTime() -
+      parse(b.date, dateFormat, new Date()).getTime()
+  );
 };

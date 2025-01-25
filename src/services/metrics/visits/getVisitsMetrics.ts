@@ -17,7 +17,12 @@ const get = async ({ date }: { date: string }) => {
 
   const total = records.length;
 
-  return { total, daily };
+  const highestCount: number = daily.reduce(
+    (acc, { count }) => (count > acc ? count : acc),
+    0
+  );
+
+  return { total, highestCount, daily };
 };
 
 export { get };
