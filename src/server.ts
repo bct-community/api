@@ -3,8 +3,11 @@ import https from 'https';
 
 import cors from 'cors';
 import express from 'express';
-import rateLimit from 'express-rate-limit';
-import slowDown from 'express-slow-down';
+import {
+  rateLimit,
+  type Options as RateLimitOptions,
+} from 'express-rate-limit';
+import { slowDown, type Options as SlowDownOptions } from 'express-slow-down';
 import morgan from 'morgan';
 
 import '@/utils/log.js';
@@ -15,16 +18,26 @@ import { connectToMongoDb } from '@/utils/connectToMongoDb.js';
 
 const isHttps = env.NODE_ENV === 'development';
 
-const speedLimiter = {
+// Exemplo de funcionamento do rate-limit e slow-down:
+// 1° minuto: O slow-down permite 45 requisições.
+// 2° minuto: O slow-down permite mais 45 requisições (total de 90).
+// 3° minuto: O rate-limit permite mais 10 requisições, completando o limite de 100 a cada 10 minutos.
+// A partir daí até o final do 10° minuto, o rate-limit impede que mais requisições sejam feitas até o período de 10 minutos se renovar.
+
+// Aplica atraso progressivo após 30 requisições dentro de 1 minuto.
+const speedLimiter: Partial<SlowDownOptions> = {
   windowMs: 1 * 60 * 1000,
-  delayAfter: 5,
-  delayMs: () => 2000,
+  delayAfter: 30,
+  delayMs: (hits) => hits * 500,
   validate: { trustProxy: false },
 };
 
-const limiter = {
-  windowMs: 1 * 60 * 1000,
-  max: 10,
+// Limita cada IP a 100 requisições por 10 minutos.
+const limiter: Partial<RateLimitOptions> = {
+  windowMs: 10 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
   validate: { trustProxy: false },
 };
 
