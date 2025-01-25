@@ -1,3 +1,4 @@
+// source: https://medium.com/weekly-webtips/how-to-sort-imports-like-a-pro-in-typescript-4ee8afd7258a
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import prettierPlugin from 'eslint-plugin-prettier';
@@ -5,7 +6,7 @@ import importPlugin from 'eslint-plugin-import';
 
 export default [
   {
-    files: ['**/*.ts'], // Arquivos que a configuração deve aplicar
+    files: ['**/*.ts'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
