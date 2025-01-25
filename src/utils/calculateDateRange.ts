@@ -1,4 +1,4 @@
-import { parse, subDays, format } from 'date-fns';
+import { format, parse, subDays } from 'date-fns';
 
 export const calculateDateRange = (
   date: string,

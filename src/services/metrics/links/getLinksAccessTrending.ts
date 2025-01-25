@@ -1,5 +1,5 @@
-import { LinksMetricsModel } from '@/models/metrics/links.js';
 import { LinksModel } from '@/models/links/index.js';
+import { LinksMetricsModel } from '@/models/metrics/links.js';
 
 const get = async () => {
   const metrics = await LinksMetricsModel.aggregate([

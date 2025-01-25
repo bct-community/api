@@ -1,15 +1,16 @@
-import rateLimit from 'express-rate-limit';
-import slowDown from 'express-slow-down';
 import http, { IncomingMessage, ServerResponse } from 'http';
 import https from 'https';
-import express from 'express';
+
 import cors from 'cors';
+import express from 'express';
+import rateLimit from 'express-rate-limit';
+import slowDown from 'express-slow-down';
 import morgan from 'morgan';
 
 import '@/utils/log.js';
-import { router } from '@/router/index.js';
 import { cert } from '@/config/cert.js';
 import { env } from '@/config/index.js';
+import { router } from '@/router/index.js';
 import { connectToMongoDb } from '@/utils/connectToMongoDb.js';
 
 const isHttps = env.NODE_ENV === 'development';

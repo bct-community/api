@@ -1,4 +1,4 @@
-import { toZonedTime, format } from 'date-fns-tz';
+import { format, toZonedTime } from 'date-fns-tz';
 
 export const todayFormatted = () => {
   const brasiliaTimezone = 'America/Sao_Paulo';

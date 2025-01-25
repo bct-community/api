@@ -1,10 +1,10 @@
-import NodeCache from 'node-cache';
 import { type Request, type Response } from 'express';
+import NodeCache from 'node-cache';
 
-import { linksData } from '@/services/links/index.js';
 import type { Links } from '@/models/links/index.js';
-import { internalServerError, notFound, sendJson } from '@/utils/http.js';
+import { linksData } from '@/services/links/index.js';
 import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
+import { internalServerError, notFound, sendJson } from '@/utils/http.js';
 
 const linksTTL = getEndOfDayTTL();
 const linksCache = new NodeCache({ stdTTL: linksTTL });

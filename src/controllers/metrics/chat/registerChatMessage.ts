@@ -1,7 +1,7 @@
 import { type Request, type Response } from 'express';
 
-import { internalServerError, endResponseWithCode } from '@/utils/http.js';
 import * as s from '@/services/metrics/chat/registerChatMessage.js';
+import { endResponseWithCode, internalServerError } from '@/utils/http.js';
 import { todayFormatted } from '@/utils/todayFormatted.js';
 
 const registerChatMessage = async (_req: Request, res: Response) => {

@@ -1,10 +1,10 @@
 import { type Request, type Response } from 'express';
 import NodeCache from 'node-cache';
 
-import { internalServerError, notFound, sendJson } from '@/utils/http.js';
 import * as s from '@/services/metrics/chat/getChatMessagesMetrics.js';
-import { yesterdayFormatted } from '@/utils/yesterdayFormatted.js';
 import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
+import { internalServerError, notFound, sendJson } from '@/utils/http.js';
+import { yesterdayFormatted } from '@/utils/yesterdayFormatted.js';
 
 const chatMessagesMetricsCacheTTL = getEndOfDayTTL();
 const chatMessagesMetricsCache = new NodeCache({

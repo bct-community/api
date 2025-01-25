@@ -19,7 +19,8 @@ const getCert = () => {
       return cert;
     } catch (error) {
       throw new Error(
-        'Error reading certificate files (localhost.pem & localhost-key.pem)'
+        'Error reading certificate files (localhost.pem & localhost-key.pem) - error:' +
+          error
       );
     }
   }

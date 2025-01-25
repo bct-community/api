@@ -1,8 +1,8 @@
 import { type Request, type Response } from 'express';
 import { z } from 'zod';
 
-import { internalServerError, endResponseWithCode } from '@/utils/http.js';
 import * as s from '@/services/metrics/visits/registerVisits.js';
+import { endResponseWithCode, internalServerError } from '@/utils/http.js';
 import { todayFormatted } from '@/utils/todayFormatted.js';
 
 const bodySchema = z.object({

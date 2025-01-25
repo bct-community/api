@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import { tokenRoutes } from './token.js';
-import { raidRoutes } from './raid.js';
 import { linksRoutes } from './links.js';
 import { metricsRoutes } from './metrics.js';
+import { raidRoutes } from './raid.js';
+import { tokenRoutes } from './token.js';
 
 export const router = Router();
 

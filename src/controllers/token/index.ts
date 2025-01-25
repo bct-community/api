@@ -1,10 +1,10 @@
-import NodeCache from 'node-cache';
 import { type Request, type Response } from 'express';
+import NodeCache from 'node-cache';
 
+import { env } from '@/config/index.js';
 import { tokenData } from '@/services/token/index.js';
 import type { CoinMarketCapResponse } from '@/types/token.js';
 import { internalServerError, sendJson } from '@/utils/http.js';
-import { env } from '@/config/index.js';
 
 const tokenTTL = env.TOKEN_CACHE_HOURS * 3600;
 const tokenCache = new NodeCache({ stdTTL: tokenTTL });

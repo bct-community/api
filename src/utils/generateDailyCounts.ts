@@ -1,4 +1,4 @@
-import { parse, subDays, format, eachDayOfInterval } from 'date-fns';
+import { eachDayOfInterval, format, parse, subDays } from 'date-fns';
 
 export const generateDailyCounts = (
   date: string,
