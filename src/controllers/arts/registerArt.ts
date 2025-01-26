@@ -11,12 +11,15 @@ const registerArt = async (req: Request, res: Response) => {
     const imageName = imageFile?.originalname;
 
     if (!imageFile || !imageFile.buffer || !imageName) {
-      console.error('registerArt badRequest: ', { imageFile, imageName });
+      console.error('[bad-request] --> registerArt: ', {
+        imageFile,
+        imageName,
+      });
       return endResponseWithCode(res, 400);
     }
 
     if (!creator || !xProfile || !description) {
-      console.error('registerArt badRequest: ', {
+      console.error('[bad-request] --> registerArt: ', {
         creator,
         xProfile,
         description,

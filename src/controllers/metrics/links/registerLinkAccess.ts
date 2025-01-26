@@ -13,7 +13,7 @@ const registerLinkAccess = async (req: Request, res: Response) => {
   const result = bodySchema.safeParse(req.body);
 
   if (!result.success) {
-    console.error('registerLinkAccess badRequest: ', result.error);
+    console.error('[bad-request] --> registerLinkAccess: ', result.error);
     return endResponseWithCode(res, 400);
   }
 
