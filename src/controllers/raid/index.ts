@@ -26,6 +26,12 @@ const getRaid = async (_req: Request, res: Response) => {
     const raidJson = await raidData();
 
     if (raidJson === null) {
+      logError({
+        type: 'not-found',
+        controller: 'getRaid',
+        error: 'Raid data not found',
+      });
+
       return notFound(res);
     }
 

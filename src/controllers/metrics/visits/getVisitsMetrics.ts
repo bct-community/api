@@ -26,6 +26,12 @@ const getVisitsMetrics = async (_req: Request, res: Response) => {
     const metricsJson = await s.get({ date: yesterdayFormatted() });
 
     if (!metricsJson) {
+      logError({
+        type: 'not-found',
+        controller: 'getVisitsMetrics',
+        error: 'Visits metrics data not found',
+      });
+
       return notFound(res);
     }
 

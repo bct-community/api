@@ -26,6 +26,12 @@ const getLinksAccessMetrics = async (_req: Request, res: Response) => {
     const metricsJson = await s.get({ date: yesterdayFormatted() });
 
     if (!metricsJson) {
+      logError({
+        type: 'not-found',
+        controller: 'getLinksAccessMetrics',
+        error: 'Link access metrics found',
+      });
+
       return notFound(res);
     }
 

@@ -12,19 +12,22 @@ const registerArt = async (req: Request, res: Response) => {
     const imageName = imageFile?.originalname;
 
     if (!imageFile || !imageFile.buffer || !imageName) {
-      console.error('[bad-request] --> registerArt: ', {
-        imageFile,
-        imageName,
+      logError({
+        type: 'bad-request',
+        controller: 'registerArt',
+        error: 'Missing image file',
       });
+
       return endResponseWithCode(res, 400);
     }
 
     if (!creator || !xProfile || !description) {
-      console.error('[bad-request] --> registerArt: ', {
-        creator,
-        xProfile,
-        description,
+      logError({
+        type: 'bad-request',
+        controller: 'registerArt',
+        error: `Missing required fields: ${{ creator, xProfile, description }}`,
       });
+
       return endResponseWithCode(res, 400);
     }
 

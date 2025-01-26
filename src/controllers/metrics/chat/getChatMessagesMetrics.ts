@@ -26,6 +26,12 @@ const getChatMessagesMetrics = async (_req: Request, res: Response) => {
     const metricsJson = await s.get({ date: yesterdayFormatted() });
 
     if (!metricsJson) {
+      logError({
+        type: 'not-found',
+        controller: 'getChatMessagesMetrics',
+        error: 'Chat messages metrics data not found',
+      });
+
       return notFound(res);
     }
 

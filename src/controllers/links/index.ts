@@ -26,6 +26,12 @@ const getLinks = async (_req: Request, res: Response) => {
     const linksJson = await linksData();
 
     if (linksJson === null) {
+      logError({
+        type: 'not-found',
+        controller: 'getLinks',
+        error: 'Links data not found',
+      });
+
       return notFound(res);
     }
 

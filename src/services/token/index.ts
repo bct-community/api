@@ -56,8 +56,17 @@ export const tokenData = async () => {
 
   const validatedData = CoinMarketCapResponseSchema.parse(data);
 
-  const tokenQuoteBase = validatedData.data?.[0]?.quote?.[0];
-  const tokenDataBase = validatedData.data?.[0];
+  if (
+    !validatedData.data ||
+    !validatedData.data[0] ||
+    !validatedData.data[0].quote ||
+    !validatedData.data[0].quote[0]
+  ) {
+    return null;
+  }
+
+  const tokenQuoteBase = validatedData.data[0].quote[0];
+  const tokenDataBase = validatedData.data[0];
 
   const tokenPriceInUSD = `$${Number(tokenQuoteBase?.price.toFixed(5)) || 0}`;
   const volumeIn24H = '$' + formatLargeNumber(tokenQuoteBase?.volume_24h || 0);

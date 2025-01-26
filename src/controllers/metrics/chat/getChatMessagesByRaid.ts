@@ -26,6 +26,12 @@ const getChatMessagesByRaid = async (_req: Request, res: Response) => {
     const metricsJson = await s.get({ date: yesterdayFormatted() });
 
     if (!metricsJson) {
+      logError({
+        type: 'not-found',
+        controller: 'getChatMessagesByRaid',
+        error: 'Chat messages by raid data not found',
+      });
+
       return notFound(res);
     }
 

@@ -4,7 +4,7 @@ import NodeCache from 'node-cache';
 import { env } from '@/config/index.js';
 import { tokenData } from '@/services/token/index.js';
 import type { CoinMarketCapResponse } from '@/types/token.js';
-import { internalServerError, sendJson } from '@/utils/http.js';
+import { internalServerError, notFound, sendJson } from '@/utils/http.js';
 import logError from '@/utils/logError.js';
 
 const tokenTTL = env.TOKEN_CACHE_HOURS * 3600;
@@ -24,6 +24,16 @@ const getToken = async (_req: Request, res: Response) => {
     console.log('Returning token data from service');
 
     const tokenJson = await tokenData();
+
+    if (tokenJson === null) {
+      logError({
+        type: 'not-found',
+        controller: 'getToken',
+        error: 'Token data not found',
+      });
+
+      return notFound(res);
+    }
 
     tokenCache.set(cacheKey, tokenJson);
 

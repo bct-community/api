@@ -9,6 +9,12 @@ const getLinksAccessTrending = async (_req: Request, res: Response) => {
     const metricsJson = await s.get();
 
     if (!metricsJson) {
+      logError({
+        type: 'not-found',
+        controller: 'getLinksAccessTrending',
+        error: 'Link access trending metrics not found',
+      });
+
       return notFound(res);
     }
 

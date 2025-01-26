@@ -26,6 +26,12 @@ const getRaidAccessMetrics = async (_req: Request, res: Response) => {
     const metricsJson = await s.get({ date: yesterdayFormatted() });
 
     if (!metricsJson) {
+      logError({
+        type: 'not-found',
+        controller: 'getRaidAccessMetrics',
+        error: 'Raid access metrics data not found',
+      });
+
       return notFound(res);
     }
 

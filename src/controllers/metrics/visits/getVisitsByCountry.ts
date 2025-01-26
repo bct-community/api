@@ -9,6 +9,12 @@ const getVisitsByCountry = async (_req: Request, res: Response) => {
     const metricsJson = await s.get();
 
     if (!metricsJson) {
+      logError({
+        type: 'not-found',
+        controller: 'getVisitsByCountry',
+        error: 'Visits by country data not found',
+      });
+
       return notFound(res);
     }
 

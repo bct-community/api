@@ -3,7 +3,7 @@ const logError = ({
   controller,
   error,
 }: {
-  type: 'bad-request' | 'internal-server-error';
+  type: 'bad-request' | 'internal-server-error' | 'not-found';
   controller: string;
   error: unknown;
 }) => {
