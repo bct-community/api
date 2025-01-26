@@ -97,6 +97,6 @@ connectToMongoDb();
 
 server.listen(env.PORT, () => {
   console.log(
-    `Server running at ${isHttps ? 'https' : 'http'}://localhost:${env.PORT}`
+    `[server] --> Running at ${isHttps ? 'https' : 'http'}://localhost:${env.PORT}`
   );
 });
