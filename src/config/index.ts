@@ -14,6 +14,9 @@ const envSchema = z.object({
   TOKEN_CACHE_HOURS: z.coerce.number().min(1),
   MONGODB_CONNECTION_STRING: z.string().nonempty(),
   MONGODB_DB_NAME: z.string().nonempty(),
+  CLOUDINARY_CLOUD_NAME: z.string().nonempty(),
+  CLOUDINARY_API_KEY: z.string().nonempty(),
+  CLOUDINARY_API_SECRET: z.string().nonempty(),
 });
 
 export const env = envSchema.parse(process.env);
