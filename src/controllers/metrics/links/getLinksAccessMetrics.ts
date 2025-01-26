@@ -17,10 +17,7 @@ const getLinksAccessMetrics = async (_req: Request, res: Response) => {
 
   const cachedData = linksAccessMetricsCache.get(cacheKey);
 
-  if (cachedData) {
-    console.log('Returning links access metrics from cache');
-    return sendJson(res, cachedData);
-  }
+  if (cachedData) return sendJson(res, cachedData);
 
   try {
     const metricsJson = await s.get({ date: yesterdayFormatted() });
@@ -37,7 +34,6 @@ const getLinksAccessMetrics = async (_req: Request, res: Response) => {
 
     linksAccessMetricsCache.set(cacheKey, metricsJson);
 
-    console.log('Returning links access metrics from service');
     return sendJson(res, metricsJson);
   } catch (error) {
     logError({

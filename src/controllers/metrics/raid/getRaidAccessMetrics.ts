@@ -17,10 +17,7 @@ const getRaidAccessMetrics = async (_req: Request, res: Response) => {
 
   const cachedData = raidAccessMetricsCache.get(cacheKey);
 
-  if (cachedData) {
-    console.log('Returning raid access metrics from cache');
-    return sendJson(res, cachedData);
-  }
+  if (cachedData) return sendJson(res, cachedData);
 
   try {
     const metricsJson = await s.get({ date: yesterdayFormatted() });
@@ -37,7 +34,6 @@ const getRaidAccessMetrics = async (_req: Request, res: Response) => {
 
     raidAccessMetricsCache.set(cacheKey, metricsJson);
 
-    console.log('Returning raid access metrics from service');
     return sendJson(res, metricsJson);
   } catch (error) {
     logError({

@@ -6,16 +6,11 @@ export const raidData = async () => {
     date: { $eq: todayFormatted() },
   }).exec();
 
-  if (!raid) {
-    console.log(`No raid found for date: ${todayFormatted()}`);
-    return null;
-  }
+  if (!raid) return null;
 
   const parsedRaid = RaidSchema.safeParse(raid.toObject());
-  if (!parsedRaid.success) {
-    console.log('Error parsing raid data:', parsedRaid.error);
-    return null;
-  }
+
+  if (!parsedRaid.success) return null;
 
   return parsedRaid.data;
 };

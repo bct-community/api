@@ -17,10 +17,7 @@ const getVisitsMetrics = async (_req: Request, res: Response) => {
 
   const cachedData = visitMetricsCache.get(cacheKey);
 
-  if (cachedData) {
-    console.log('Returning visit access metrics from cache');
-    return sendJson(res, cachedData);
-  }
+  if (cachedData) return sendJson(res, cachedData);
 
   try {
     const metricsJson = await s.get({ date: yesterdayFormatted() });
@@ -37,7 +34,6 @@ const getVisitsMetrics = async (_req: Request, res: Response) => {
 
     visitMetricsCache.set(cacheKey, metricsJson);
 
-    console.log('Returning visit access metrics from service');
     return sendJson(res, metricsJson);
   } catch (error) {
     logError({

@@ -17,10 +17,7 @@ const getChatMessagesByRaid = async (_req: Request, res: Response) => {
 
   const cachedData = chatMessagesByRaidCache.get(cacheKey);
 
-  if (cachedData) {
-    console.log('Returning chat messages by raid from cache');
-    return sendJson(res, cachedData);
-  }
+  if (cachedData) return sendJson(res, cachedData);
 
   try {
     const metricsJson = await s.get({ date: yesterdayFormatted() });
@@ -37,7 +34,6 @@ const getChatMessagesByRaid = async (_req: Request, res: Response) => {
 
     chatMessagesByRaidCache.set(cacheKey, metricsJson);
 
-    console.log('Returning chat messages by raid from service');
     return sendJson(res, metricsJson);
   } catch (error) {
     logError({

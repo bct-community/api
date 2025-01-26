@@ -15,14 +15,9 @@ const getToken = async (_req: Request, res: Response) => {
 
   const cachedData = tokenCache.get<CoinMarketCapResponse>(cacheKey);
 
-  if (cachedData) {
-    console.log('Returnin token data from cache');
-    return sendJson(res, cachedData);
-  }
+  if (cachedData) return sendJson(res, cachedData);
 
   try {
-    console.log('Returning token data from service');
-
     const tokenJson = await tokenData();
 
     if (tokenJson === null) {

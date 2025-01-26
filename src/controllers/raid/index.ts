@@ -15,14 +15,9 @@ const getRaid = async (_req: Request, res: Response) => {
 
   const cachedData = raidCache.get<Raid>(cacheKey);
 
-  if (cachedData) {
-    console.log('Returnin raid data from cache');
-    return sendJson(res, cachedData);
-  }
+  if (cachedData) return sendJson(res, cachedData);
 
   try {
-    console.log('Returning raid data from service');
-
     const raidJson = await raidData();
 
     if (raidJson === null) {

@@ -17,10 +17,7 @@ const getChatMessagesMetrics = async (_req: Request, res: Response) => {
 
   const cachedData = chatMessagesMetricsCache.get(cacheKey);
 
-  if (cachedData) {
-    console.log('Returning chat messages metrics from cache');
-    return sendJson(res, cachedData);
-  }
+  if (cachedData) return sendJson(res, cachedData);
 
   try {
     const metricsJson = await s.get({ date: yesterdayFormatted() });
@@ -37,7 +34,6 @@ const getChatMessagesMetrics = async (_req: Request, res: Response) => {
 
     chatMessagesMetricsCache.set(cacheKey, metricsJson);
 
-    console.log('Returning chat messages metrics from service');
     return sendJson(res, metricsJson);
   } catch (error) {
     logError({
