@@ -5,6 +5,7 @@ import * as s from '@/services/metrics/chat/getChatMessagesMetrics.js';
 import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
 import { yesterdayFormatted } from '@/utils/yesterdayFormatted.js';
+import logError from '@/utils/logError.js';
 
 const chatMessagesMetricsCacheTTL = getEndOfDayTTL();
 const chatMessagesMetricsCache = new NodeCache({
@@ -33,7 +34,11 @@ const getChatMessagesMetrics = async (_req: Request, res: Response) => {
     console.log('Returning chat messages metrics from service');
     return sendJson(res, metricsJson);
   } catch (error) {
-    console.error('Error on getChatMessagesMetrics service: ', error);
+    logError({
+      type: 'internal-server-error',
+      controller: 'getChatMessagesMetrics',
+      error,
+    });
 
     return internalServerError(res);
   }

@@ -4,6 +4,7 @@ import { z } from 'zod';
 import * as s from '@/services/metrics/links/registerLinkAccess.js';
 import { endResponseWithCode, internalServerError } from '@/utils/http.js';
 import { todayFormatted } from '@/utils/todayFormatted.js';
+import logError from '@/utils/logError.js';
 
 const bodySchema = z.object({
   linkId: z.string().nonempty('linkId is required'),
@@ -24,7 +25,11 @@ const registerLinkAccess = async (req: Request, res: Response) => {
 
     return endResponseWithCode(res, 200);
   } catch (error) {
-    console.error('Error on registerLinkAccess service: ', error);
+    logError({
+      type: 'internal-server-error',
+      controller: 'registerLinkAccess',
+      error,
+    });
 
     return internalServerError(res);
   }

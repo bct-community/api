@@ -5,6 +5,7 @@ import * as s from '@/services/metrics/raid/getRaidAccessMetrics.js';
 import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
 import { yesterdayFormatted } from '@/utils/yesterdayFormatted.js';
+import logError from '@/utils/logError.js';
 
 const raidAccessMetricsCacheTTL = getEndOfDayTTL();
 const raidAccessMetricsCache = new NodeCache({
@@ -33,7 +34,11 @@ const getRaidAccessMetrics = async (_req: Request, res: Response) => {
     console.log('Returning raid access metrics from service');
     return sendJson(res, metricsJson);
   } catch (error) {
-    console.error('Error on getRaidAccessMetrics service: ', error);
+    logError({
+      type: 'internal-server-error',
+      controller: 'getRaidAccessMetrics',
+      error,
+    });
 
     return internalServerError(res);
   }

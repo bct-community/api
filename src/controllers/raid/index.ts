@@ -5,6 +5,7 @@ import type { Raid } from '@/models/raid/index.js';
 import { raidData } from '@/services/raid/index.js';
 import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
+import logError from '@/utils/logError.js';
 
 const raidTTL = getEndOfDayTTL();
 const raidCache = new NodeCache({ stdTTL: raidTTL });
@@ -32,7 +33,12 @@ const getRaid = async (_req: Request, res: Response) => {
 
     return sendJson(res, raidJson);
   } catch (error) {
-    console.error('Error on raidData service: ', error);
+    logError({
+      type: 'internal-server-error',
+      controller: 'getRaid',
+      error,
+    });
+
     return internalServerError(res);
   }
 };

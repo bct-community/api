@@ -5,6 +5,7 @@ import * as s from '@/services/metrics/visits/getVisitsMetrics.js';
 import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
 import { yesterdayFormatted } from '@/utils/yesterdayFormatted.js';
+import logError from '@/utils/logError.js';
 
 const visitMetricsCacheTTL = getEndOfDayTTL();
 const visitMetricsCache = new NodeCache({
@@ -33,7 +34,11 @@ const getVisitsMetrics = async (_req: Request, res: Response) => {
     console.log('Returning visit access metrics from service');
     return sendJson(res, metricsJson);
   } catch (error) {
-    console.error('Error on getVisitsMetrics service: ', error);
+    logError({
+      type: 'internal-server-error',
+      controller: 'getVisitsMetrics',
+      error,
+    });
 
     return internalServerError(res);
   }

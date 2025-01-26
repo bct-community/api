@@ -3,6 +3,7 @@ import { type Request, type Response } from 'express';
 import * as s from '@/services/metrics/chat/registerChatMessage.js';
 import { endResponseWithCode, internalServerError } from '@/utils/http.js';
 import { todayFormatted } from '@/utils/todayFormatted.js';
+import logError from '@/utils/logError.js';
 
 const registerChatMessage = async (_req: Request, res: Response) => {
   try {
@@ -10,7 +11,11 @@ const registerChatMessage = async (_req: Request, res: Response) => {
 
     return endResponseWithCode(res, 200);
   } catch (error) {
-    console.error('Error on registerChatMessage service: ', error);
+    logError({
+      type: 'internal-server-error',
+      controller: 'registerChatMessage',
+      error,
+    });
 
     return internalServerError(res);
   }

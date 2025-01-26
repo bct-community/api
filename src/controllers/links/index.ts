@@ -5,6 +5,7 @@ import type { Links } from '@/models/links/index.js';
 import { linksData } from '@/services/links/index.js';
 import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
+import logError from '@/utils/logError.js';
 
 const linksTTL = getEndOfDayTTL();
 const linksCache = new NodeCache({ stdTTL: linksTTL });
@@ -32,7 +33,12 @@ const getLinks = async (_req: Request, res: Response) => {
 
     return sendJson(res, linksJson);
   } catch (error) {
-    console.error('Error on linksData service: ', error);
+    logError({
+      type: 'internal-server-error',
+      controller: 'getLinks',
+      error,
+    });
+
     return internalServerError(res);
   }
 };
