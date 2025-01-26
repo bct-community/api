@@ -13,6 +13,7 @@ const registerVisit = async (req: Request, res: Response) => {
   const result = bodySchema.safeParse(req.body);
 
   if (!result.success) {
+    console.error('registerVisit badRequest: ', result.error);
     return endResponseWithCode(res, 400);
   }
 
