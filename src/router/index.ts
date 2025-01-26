@@ -1,10 +1,10 @@
 import { Router } from 'express';
 
+import { artsRoutes } from './arts.js';
 import { linksRoutes } from './links.js';
 import { metricsRoutes } from './metrics.js';
 import { raidRoutes } from './raid.js';
 import { tokenRoutes } from './token.js';
-import { artsRoutes } from './arts.js';
 
 export const router = Router();
 

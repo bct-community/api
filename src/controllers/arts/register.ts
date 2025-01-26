@@ -1,11 +1,12 @@
-import { type Request, type Response } from 'express';
 import fs from 'fs';
 import path from 'path';
-import type { UploadApiOptions } from 'cloudinary';
 
-import { endResponseWithCode, internalServerError } from '@/utils/http.js';
-import { cloudinaryConnection } from '@/utils/connectToCloudinary.js';
+import type { UploadApiOptions } from 'cloudinary';
+import { type Request, type Response } from 'express';
+
 import { ArtsModel } from '@/models/arts/index.js';
+import { cloudinaryConnection } from '@/utils/connectToCloudinary.js';
+import { endResponseWithCode, internalServerError } from '@/utils/http.js';
 
 const register = async (req: Request, res: Response) => {
   try {

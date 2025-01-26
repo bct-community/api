@@ -4,10 +4,10 @@ import https from 'https';
 import cors from 'cors';
 import express from 'express';
 import {
-  rateLimit,
   type Options as RateLimitOptions,
+  rateLimit,
 } from 'express-rate-limit';
-import { slowDown, type Options as SlowDownOptions } from 'express-slow-down';
+import { type Options as SlowDownOptions, slowDown } from 'express-slow-down';
 import morgan from 'morgan';
 
 import '@/utils/log.js';
