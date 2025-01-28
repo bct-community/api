@@ -96,11 +96,14 @@ app.use('/api', router);
 
 connectToMongoDb();
 
+const endOfDayTTL = getEndOfDayTTL();
+const hours = Math.floor(endOfDayTTL / 3600);
+const minutes = Math.floor((endOfDayTTL % 3600) / 60);
+const formattedTTL = `${hours} hours and ${minutes} minutes`;
+
 server.listen(env.PORT, () => {
   console.log(
     `[server] --> Running at ${isHttps ? 'https' : 'http'}://localhost:${env.PORT}`
   );
-  console.log(
-    `[cache] --> End of the day's TTL is set to ${getEndOfDayTTL()} seconds`
-  );
+  console.log(`[cache] --> End of the day's TTL is set to ${formattedTTL}`);
 });
