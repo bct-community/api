@@ -16,7 +16,12 @@ export const artsData = async ({ page }: { page: number }) => {
 
   if (!parsedArts.success) return null;
 
-  const next = arts.length === RECORDS_PER_PAGE;
+  const hasNext = await ArtsModel.findOne({ approved: true })
+    .skip(skip + RECORDS_PER_PAGE)
+    .limit(1)
+    .exec();
+
+  const next = !!hasNext;
 
   return { arts: parsedArts.data, page, next };
 };
