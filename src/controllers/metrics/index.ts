@@ -15,6 +15,7 @@ export { default as getChatMessagesMetrics } from './chat/getChatMessagesMetrics
 export { default as registerChatMessageInRaid } from './chat/registerChatMessageInRaid.js';
 export { default as getChatMessagesByRaid } from './chat/getChatMessagesByRaid.js';
 
-// export { default as registerArtSubmission } from './art/registerArtSubmission.js';
-// export { default as getArtSubmissionMetrics } from './art/getArtSubmissionMetrics.js';
-// export { default as getArtProducersMetrics } from './art/getArtProducersMetrics.js';
+export { default as registerArtSubmission } from './arts/registerArtSubmission.js';
+export { default as getArtsSubmissionMetrics } from './arts/getArtsMetrics.js';
+export { default as getArtsProducersNumber } from './arts/getArtsProducersNumber.js';
+export { default as getArtsProducersTrending } from './arts/getArtsProducersTrending.js';

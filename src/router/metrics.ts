@@ -14,9 +14,10 @@ import {
   registerLinkAccess,
   registerRaidAccess,
   registerVisit,
-  // registerArtSubmission,
-  // getArtSubmissionMetrics,
-  // getArtProducersMetrics,
+  registerArtSubmission,
+  getArtsSubmissionMetrics,
+  getArtsProducersNumber,
+  getArtsProducersTrending,
 } from '@/controllers/metrics/index.js';
 
 const router = Router();
@@ -43,8 +44,9 @@ router.post('/chat/raid-message', registerChatMessageInRaid);
 router.get('/chat/raid-message', getChatMessagesByRaid);
 
 // Arts (Envio de artes e métricas relacionadas)
-// router.post('/arts', registerArtSubmission);
-// router.get('/arts', getArtSubmissionMetrics);
-// router.get('/arts/producers', getArtProducersMetrics);
+router.post('/arts', registerArtSubmission);
+router.get('/arts', getArtsSubmissionMetrics);
+router.get('/arts/producers', getArtsProducersNumber);
+router.get('/arts/producers/trending', getArtsProducersTrending);
 
 export { router as metricsRoutes };
