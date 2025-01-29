@@ -6,7 +6,6 @@ import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
 import { yesterdayFormatted } from '@/utils/yesterdayFormatted.js';
 import logError from '@/utils/logError.js';
-import { todayFormatted } from '@/utils/todayFormatted.js';
 
 const artsMetricsCacheTTL = getEndOfDayTTL();
 const artsMetricsCache = new NodeCache({
@@ -21,8 +20,7 @@ const getArtsMetrics = async (_req: Request, res: Response) => {
   if (cachedData) return sendJson(res, cachedData);
 
   try {
-    // const metricsJson = await s.get({ date: yesterdayFormatted() });
-    const metricsJson = await s.get({ date: todayFormatted() });
+    const metricsJson = await s.get({ date: yesterdayFormatted() });
 
     if (!metricsJson) {
       logError({
