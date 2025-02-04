@@ -10,7 +10,7 @@ const get = async ({ date }: { date: string }) => {
     type: 'raid-message',
   });
 
-  if (!records) {
+  if (!records || records.length === 0) {
     return null;
   }
 

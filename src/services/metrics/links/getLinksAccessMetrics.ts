@@ -9,7 +9,7 @@ const get = async ({ date }: { date: string }) => {
     date: { $gte: startDate, $lte: endDate },
   });
 
-  if (!records) {
+  if (!records || records.length === 0) {
     return null;
   }
 
