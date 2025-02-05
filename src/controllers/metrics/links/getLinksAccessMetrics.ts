@@ -4,8 +4,8 @@ import NodeCache from 'node-cache';
 import * as s from '@/services/metrics/links/getLinksAccessMetrics.js';
 import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
-import { yesterdayDate } from '@/utils/yesterdayDate.js';
 import logError from '@/utils/logError.js';
+import { yesterdayDate } from '@/utils/yesterdayDate.js';
 
 const linksAccessMetricsCacheTTL = getEndOfDayTTL();
 const linksAccessMetricsCache = new NodeCache({

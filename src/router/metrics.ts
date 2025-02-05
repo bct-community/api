@@ -1,6 +1,9 @@
 import { Router } from 'express';
 
 import {
+  getArtsProducersNumber,
+  getArtsProducersTrending,
+  getArtsSubmissionMetrics,
   getChatMessagesByRaid,
   getChatMessagesMetrics,
   getLinksAccessMetrics,
@@ -9,15 +12,12 @@ import {
   getRaidAccessTrending,
   getVisitsByCountry,
   getVisitsMetrics,
+  registerArtSubmission,
   registerChatMessage,
   registerChatMessageInRaid,
   registerLinkAccess,
   registerRaidAccess,
   registerVisit,
-  registerArtSubmission,
-  getArtsSubmissionMetrics,
-  getArtsProducersNumber,
-  getArtsProducersTrending,
 } from '@/controllers/metrics/index.js';
 
 const router = Router();

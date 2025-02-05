@@ -3,8 +3,8 @@ import { z } from 'zod';
 
 import * as s from '@/services/metrics/visits/registerVisits.js';
 import { endResponseWithCode, internalServerError } from '@/utils/http.js';
-import { todayDate } from '@/utils/todayDate.js';
 import logError from '@/utils/logError.js';
+import { todayDate } from '@/utils/todayDate.js';
 
 const bodySchema = z.object({
   country: z.string().nonempty('Country is required'),

@@ -1,7 +1,7 @@
 import { type Request, type Response } from 'express';
 
-import { endResponseWithCode, internalServerError } from '@/utils/http.js';
 import { register } from '@/services/arts/registerArt.js';
+import { endResponseWithCode, internalServerError } from '@/utils/http.js';
 import logError from '@/utils/logError.js';
 
 const registerArt = async (req: Request, res: Response) => {

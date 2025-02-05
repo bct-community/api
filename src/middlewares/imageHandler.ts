@@ -1,7 +1,8 @@
-import { endResponseWithCode } from '@/utils/http.js';
-import type { Request, Response, NextFunction } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import multer from 'multer';
 import sharp from 'sharp';
+
+import { endResponseWithCode } from '@/utils/http.js';
 
 const storage = multer.memoryStorage();
 
@@ -35,7 +36,7 @@ const imageHandler = async (
 
       req.file.buffer = compressedImage;
       next();
-    } catch (error) {
+    } catch (_error) {
       return endResponseWithCode(res, 500);
     }
   });

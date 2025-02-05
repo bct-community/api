@@ -15,6 +15,7 @@ import { cert } from '@/config/cert.js';
 import { env } from '@/config/index.js';
 import { router } from '@/router/index.js';
 import { connectToMongoDb } from '@/utils/connectToMongoDb.js';
+
 import { getEndOfDayTTL } from './utils/getEndOfDayTTL.js';
 
 const isHttps = env.NODE_ENV === 'development';

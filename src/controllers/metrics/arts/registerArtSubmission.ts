@@ -3,8 +3,8 @@ import { z } from 'zod';
 
 import * as s from '@/services/metrics/arts/registerArtSubmission.js';
 import { endResponseWithCode, internalServerError } from '@/utils/http.js';
-import { todayDate } from '@/utils/todayDate.js';
 import logError from '@/utils/logError.js';
+import { todayDate } from '@/utils/todayDate.js';
 
 const bodySchema = z.object({
   xProfile: z.string().nonempty('X profile is required'),

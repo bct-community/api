@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import type { UploadApiOptions } from 'cloudinary';
+
 import { ArtsModel } from '@/models/arts/index.js';
 import { cloudinaryConnection } from '@/utils/connectToCloudinary.js';
 

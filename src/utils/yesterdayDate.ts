@@ -1,5 +1,5 @@
-import { toZonedTime } from 'date-fns-tz';
 import { startOfDay, subDays } from 'date-fns';
+import { toZonedTime } from 'date-fns-tz';
 
 export const yesterdayDate = (): Date => {
   const brasiliaTimezone = 'America/Sao_Paulo';
