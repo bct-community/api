@@ -1,5 +1,6 @@
 import { RaidMetricsModel } from '@/models/metrics/raid.js';
 import { RaidModel } from '@/models/raid/index.js';
+import { format } from 'date-fns';
 
 const get = async () => {
   const metrics = await RaidMetricsModel.aggregate([
@@ -30,12 +31,14 @@ const get = async () => {
 
   const raids = metrics
     .map((metric) => {
-      const raidDetail = raidDetails.find((raid) => raid.date === metric._id);
+      const raidDetail = raidDetails.find(
+        (raid) => raid.date.toISOString() === metric._id.toISOString()
+      );
 
       if (!raidDetail) return null;
 
       return {
-        date: metric._id,
+        date: format(metric._id, 'dd/MM/yyyy'),
         count: metric.totalCount,
         platform: raidDetail.platform,
       };
