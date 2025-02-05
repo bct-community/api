@@ -4,7 +4,7 @@ import NodeCache from 'node-cache';
 import * as s from '@/services/metrics/chat/getChatMessagesMetrics.js';
 import { getEndOfDayTTL } from '@/utils/getEndOfDayTTL.js';
 import { internalServerError, notFound, sendJson } from '@/utils/http.js';
-import { yesterdayFormatted } from '@/utils/yesterdayFormatted.js';
+import { yesterdayDate } from '@/utils/yesterdayDate.js';
 import logError from '@/utils/logError.js';
 
 const chatMessagesMetricsCacheTTL = getEndOfDayTTL();
@@ -20,7 +20,7 @@ const getChatMessagesMetrics = async (_req: Request, res: Response) => {
   if (cachedData) return sendJson(res, cachedData);
 
   try {
-    const metricsJson = await s.get({ date: yesterdayFormatted() });
+    const metricsJson = await s.get({ date: yesterdayDate() });
 
     if (!metricsJson) {
       logError({

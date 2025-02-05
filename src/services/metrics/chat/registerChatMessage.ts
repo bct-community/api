@@ -1,6 +1,6 @@
 import { ChatMetricsModel } from '@/models/metrics/chat.js';
 
-const register = async ({ date }: { date: string }) => {
+const register = async ({ date }: { date: Date }) => {
   const newAccess = new ChatMetricsModel({
     date,
     type: 'user-message',

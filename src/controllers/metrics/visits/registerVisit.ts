@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import * as s from '@/services/metrics/visits/registerVisits.js';
 import { endResponseWithCode, internalServerError } from '@/utils/http.js';
-import { todayFormatted } from '@/utils/todayFormatted.js';
+import { todayDate } from '@/utils/todayDate.js';
 import logError from '@/utils/logError.js';
 
 const bodySchema = z.object({
@@ -26,7 +26,7 @@ const registerVisit = async (req: Request, res: Response) => {
   const { country } = result.data;
 
   try {
-    await s.register({ country, date: todayFormatted() });
+    await s.register({ country, date: todayDate() });
 
     return endResponseWithCode(res, 200);
   } catch (error) {

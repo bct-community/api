@@ -7,8 +7,9 @@ const ArtsMetricsSchema = new Schema(
       required: true,
     },
     date: {
-      type: String,
+      type: Date,
       required: true,
+      index: true,
     },
   },
   { collection: 'arts_metrics' }

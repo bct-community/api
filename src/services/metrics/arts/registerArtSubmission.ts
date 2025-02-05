@@ -5,7 +5,7 @@ const register = async ({
   date,
 }: {
   xProfile: string;
-  date: string;
+  date: Date;
 }) => {
   const newAccess = new ArtsMetricsModel({
     xProfile,

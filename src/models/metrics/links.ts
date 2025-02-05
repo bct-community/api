@@ -3,8 +3,9 @@ import { Schema, model } from 'mongoose';
 const linksMetricsSchema = new Schema(
   {
     date: {
-      type: String,
+      type: Date,
       required: true,
+      index: true,
     },
     linkId: {
       type: Schema.Types.ObjectId,

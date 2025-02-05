@@ -3,8 +3,9 @@ import { Schema, model } from 'mongoose';
 const chatMetricsSchema = new Schema(
   {
     date: {
-      type: String,
+      type: Date,
       required: true,
+      index: true,
     },
     type: {
       type: String,

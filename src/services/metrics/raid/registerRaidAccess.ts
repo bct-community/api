@@ -1,6 +1,6 @@
 import { RaidMetricsModel } from '@/models/metrics/raid.js';
 
-const register = async ({ date }: { date: string }) => {
+const register = async ({ date }: { date: Date }) => {
   const newAccess = new RaidMetricsModel({
     date,
   });

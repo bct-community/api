@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import * as s from '@/services/metrics/links/registerLinkAccess.js';
 import { endResponseWithCode, internalServerError } from '@/utils/http.js';
-import { todayFormatted } from '@/utils/todayFormatted.js';
+import { todayDate } from '@/utils/todayDate.js';
 import logError from '@/utils/logError.js';
 
 const bodySchema = z.object({
@@ -26,7 +26,7 @@ const registerLinkAccess = async (req: Request, res: Response) => {
   const { linkId } = result.data;
 
   try {
-    await s.register({ date: todayFormatted(), linkId });
+    await s.register({ date: todayDate(), linkId });
 
     return endResponseWithCode(res, 200);
   } catch (error) {

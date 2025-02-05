@@ -1,29 +1,28 @@
-import { eachDayOfInterval, format, parse, subDays } from 'date-fns';
+import { eachDayOfInterval, format } from 'date-fns';
 
 export const generateDailyCounts = (
-  date: string,
+  date: Date,
   days: number,
-  records: { date: string }[],
-  dateFormat = 'dd/MM/yyyy'
-) => {
-  const parsedDate = parse(date, dateFormat, new Date());
-  const startDate = subDays(parsedDate, days);
+  records: { date: Date }[]
+): { date: string; count: number }[] => {
+  const dateFormat = 'dd/MM/yyyy';
+  const startDate = new Date(date);
+  startDate.setDate(startDate.getDate() - days);
 
-  const dailyCounts = eachDayOfInterval({
-    start: startDate,
-    end: parsedDate,
-  }).map((currentDate) => {
-    const formattedDate = format(currentDate, dateFormat);
-    const count = records.filter(
-      (record) => record.date === formattedDate
-    ).length;
+  const recordsMap = new Map<string, number>();
 
-    return { date: formattedDate, count };
+  records.forEach((record) => {
+    const formattedRecordDate = format(record.date, dateFormat);
+    recordsMap.set(
+      formattedRecordDate,
+      (recordsMap.get(formattedRecordDate) || 0) + 1
+    );
   });
 
-  return dailyCounts.sort(
-    (a, b) =>
-      parse(a.date, dateFormat, new Date()).getTime() -
-      parse(b.date, dateFormat, new Date()).getTime()
+  return eachDayOfInterval({ start: startDate, end: date }).map(
+    (currentDate) => ({
+      date: format(currentDate, dateFormat),
+      count: recordsMap.get(format(currentDate, dateFormat)) || 0,
+    })
   );
 };

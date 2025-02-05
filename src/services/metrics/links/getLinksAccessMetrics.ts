@@ -2,7 +2,7 @@ import { LinksMetricsModel } from '@/models/metrics/links.js';
 import { calculateDateRange } from '@/utils/calculateDateRange.js';
 import { generateDailyCounts } from '@/utils/generateDailyCounts.js';
 
-const get = async ({ date }: { date: string }) => {
+const get = async ({ date }: { date: Date }) => {
   const { startDate, endDate } = calculateDateRange(date, 7);
 
   const records = await LinksMetricsModel.find({

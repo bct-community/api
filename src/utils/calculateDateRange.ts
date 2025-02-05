@@ -1,16 +1,14 @@
-import { format, parse, subDays } from 'date-fns';
+import { subDays, startOfDay } from 'date-fns';
 
-export const calculateDateRange = (
-  date: string,
-  days: number,
-  dateFormat = 'dd/MM/yyyy'
-) => {
-  const parsedDate = parse(date, dateFormat, new Date());
+interface DateRange {
+  startDate: Date;
+  endDate: Date;
+}
 
-  const startDate = subDays(parsedDate, days);
+export const calculateDateRange = (date: Date, days: number): DateRange => {
+  const parsedDate = startOfDay(date);
+  const startDate = startOfDay(subDays(parsedDate, days));
+  const endDate = parsedDate;
 
-  return {
-    startDate: format(startDate, dateFormat),
-    endDate: format(parsedDate, dateFormat),
-  };
+  return { startDate, endDate };
 };

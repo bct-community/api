@@ -7,8 +7,9 @@ const visitsMetricsSchema = new Schema(
       required: true,
     },
     date: {
-      type: String,
+      type: Date,
       required: true,
+      index: true,
     },
   },
   { collection: 'visits_metrics' }

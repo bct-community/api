@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import * as s from '@/services/metrics/arts/registerArtSubmission.js';
 import { endResponseWithCode, internalServerError } from '@/utils/http.js';
-import { todayFormatted } from '@/utils/todayFormatted.js';
+import { todayDate } from '@/utils/todayDate.js';
 import logError from '@/utils/logError.js';
 
 const bodySchema = z.object({
@@ -26,7 +26,7 @@ const registerArtSubmission = async (req: Request, res: Response) => {
   const { xProfile } = result.data;
 
   try {
-    await s.register({ xProfile, date: todayFormatted() });
+    await s.register({ xProfile, date: todayDate() });
 
     return endResponseWithCode(res, 200);
   } catch (error) {
