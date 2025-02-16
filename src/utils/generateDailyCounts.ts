@@ -7,7 +7,7 @@ export const generateDailyCounts = (
 ): { date: string; count: number }[] => {
   const dateFormat = 'dd/MM/yyyy';
   const startDate = new Date(date);
-  startDate.setDate(startDate.getDate() - days);
+  startDate.setDate(startDate.getDate() - (days - 1));
 
   const recordsMap = new Map<string, number>();
 
