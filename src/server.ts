@@ -76,7 +76,7 @@ morgan.token('statusColor', (_req: IncomingMessage, res: ServerResponse) => {
 });
 
 const morganFormat =
-  ':timestamp - :method :url :statusColor :response-time ms - :res[content-length]';
+  '[:timestamp] :method :url :statusColor :response-time ms - :res[content-length]';
 
 const app = express();
 const server = isHttps
