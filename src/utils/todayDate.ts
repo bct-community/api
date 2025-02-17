@@ -1,9 +1,6 @@
-import { startOfDay } from 'date-fns';
-import { toZonedTime } from 'date-fns-tz';
-
 export const todayDate = (): Date => {
-  const brasiliaTimezone = 'America/Sao_Paulo';
-  const now = startOfDay(new Date());
+  const now = new Date();
+  now.setUTCHours(0, 0, 0, 0);
 
-  return toZonedTime(now, brasiliaTimezone);
+  return now;
 };
