@@ -1,15 +1,15 @@
+import { ArtsModel } from '@/models/arts/index.js';
 import { ArtsMetricsModel } from '@/models/metrics/arts.js';
 
 const get = async () => {
-  const records = await ArtsMetricsModel.find().distinct('xProfile');
+  const producers = await ArtsMetricsModel.find().distinct('xProfile');
+  const arts = await ArtsModel.countDocuments({ approved: true });
 
-  if (!records || records.length === 0) {
+  if (!producers || producers.length === 0 || !arts || arts === 0) {
     return null;
   }
 
-  const count = records.length;
-
-  return { count };
+  return { producers: producers.length, arts };
 };
 
 export { get };
